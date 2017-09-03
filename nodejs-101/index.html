@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>reveal.js - The HTML Presentation Framework</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+	<link rel="stylesheet" href="mystyle.css" />
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+				<section>
+					<h1>Node.JS 101</h1>
+					<h2>An introduction</h2>
+					<h3>by Gilly Barr</h3>
+				</section>
+
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li><p>What is nodejs</p>
+						</li>
+						<li><p>Why & When to use nodejs</p>
+						</li>
+						<li><p>Logz.io + NodeJS = ?</p>
+						</li>
+						<li><p>Demo</p>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What is NodeJS ?</h2>
+					<p>A quick history lesson...</p>
+					<ul>
+						<li class="fragment"><p>
+							<b>2008</b> - Google released V8<br/>
+							V8 is the open source VM that runs javascript in chrome.<br/>
+							The fastest at the time.</p>
+						</li>
+						<li class="fragment"><p>
+							<b>2009</b> - Ryan Dahl released NodeJs<br/>
+							Initially intended to be a web server.<br/>
+							First platform that allows running js on the server side.</p>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>What is NodeJS ?</h2>
+					<ul>
+						<li>Single threaded (similar to js in the browser)</li>
+						<li>Non-blocking I/O</li>
+						<li>Event driven</li>
+						<li>Comes with native bindings (C++) for handling files, networking, web sockets, etc.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Why & When to use nodejs ?</h2>
+					<p>
+						Node is <b>single threaded</b> but also <b>non-blocking</b>.
+					</p>
+					<p>
+						This combination is ideal for building most web servers,<br/>
+						and gives us the ability to stand great load on a single thread.
+					</p>
+				</section>
+
+				<section>
+					<h3>The anatomy of a web request</h3>
+					<p><img src="http://image.slidesharecdn.com/velocity-2012-120627113719-phpapp01/95/slide-20-728.jpg?1340815246" alt=""></p>
+					<p><small>Source: <a href="http://www.slideshare.net/sh1mmer/a-language-for-the-internet-why-javascript-and-nodejs-is-right-for-internet-applications">Why js and Node.js is right for Internet Applications</a></small></p>
+				</section>
+
+				<section>
+					<h3>The First Rule of Node</h3>
+					<ul>
+						<li><p>All I/O activities (HTTP requests, database queries, file I/O, etc.) should be non-blocking</p>
+						</li>
+						<li><p>Instead they run independently and then emit an event when the data is available</p>
+						</li>
+						<li class="fragment"><p>Sounds famililar? Events and callbacks</p>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>What about scaling ?</h3>
+					<p>
+						We have two main options for scaling a node web app :
+						<ul>
+							<li class="fragment">Take advantage of multi-core systems to launch a cluster of node processes</li>
+							<li class="fragment">NodeJS has a built in 'cluster' module to manage that</li>
+							<li class="fragment">Still not enough?</li>
+						</ul>
+					</p>
+				</section>
+
+				<section>
+					<h3>Scaling beyond a single machine</h3>
+					<p><img src="img/scale.png" class="noborder"></p>
+					<p><small>* Your code needs to be stateless.</small></p>
+					<p><small>Source: <a href="https://github.com/krampstudio/node-grunt-overview-presentation">JavaScript as a Platform</a></small></p>
+				</section>
+
+				<section>
+					<h3>Some more advantages of using nodejs</h3>
+					<ul>
+						<li>Easy to learn and code</li>
+						<li>Fast for prototyping</li>
+						<li>Single language across client & server</li>
+						<li><b>HUGE</b> ecosystem (npm)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>But of course, there are no silver bullets...</h3>
+					<small>(The downsides)</small>
+					<ul>
+						<li>
+							Slow on computation<br/>
+							<small>Not for running encryption, compression, machine learning, etc.</small>
+						</li>
+						<li>Lack of inherent code organization (and other cons of js)</li>
+						<li>Callback hell (although not really anymore with ECMA 7)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Still not convinced ?</h3>
+					<p>Companies using nodejs in production today :</p>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-cisco.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-github.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-godaddy.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-groupon.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-ibm.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-klout.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-linkedin.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-medium.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-microsoft.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-netflix.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-newyorktimes.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-paypal.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-rakuten.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-sap.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-trello.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-uber.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-walmart.png"/>
+					<img style="border:0; background-color:transparent; box-shadow:none; width:150px; margin-right: 30px; vertical-align:middle;" src="img/logos/logo-yahoo.png"/>
+				</section>
+
+				<section>
+					<h3>Logz.io + NodeJS = &lt;3</h3>
+				</section>
+
+				<section>
+					<h3>Play & NodeJS</h3>
+					<ul>
+						<li class="fragment">Play is the current web server backend. It's a very robust framework written in Scala.</li>
+						<li class="fragment">Until kibana v4.2, we replaced the very lightweight backend with Play.</li>
+						<li class="fragment">kibana 4.5 introduced nodejs as a backend, along with some new server side features.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Play vs. NodeJS ?</h3>
+					<ul>
+						<li class="fragment">Web applications cannot use 2 different backends.</li>
+						<li class="fragment">We can either implement all the features kibana releases again in Play.</li>
+						<li class="fragment">Or replace our current use of Play with NodeJS, and combine it with kibana's code</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Will this work ?</h3>
+					<ul>
+						<li>Play currently does very little computation.</li>
+						<li>Most of its work is to proxy requests to services.</li>
+						<li>This makes it a perfect candidate to use nodejs.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Demo time</h2>
+				</section>
+
+				<section>
+					<h1>Thank you</h1>
+					<p><img src="http://www.troll.me/images/xzibit-yo-dawg/yo-dawg-i-heard-you-like-nodejs-so-i-put-callbacks-in-your-callbacks-so-you-can-call-back-your-callbacks.jpg" /></p>
+				</section>
+
+			</div>
+
+		</div>
+
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+					]
+				});
+
+</script>
+
+<script>
+Reveal.addEventListener( 'slidechanged', function( event ) {
+			// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			var notes = event.currentSlide.querySelector(".notes");
+			if(notes) {
+				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+			}
+		} );
+</script>
+
+</body>
+</html>
