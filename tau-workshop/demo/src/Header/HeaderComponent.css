@@ -1,0 +1,9 @@
+.auth-menu span {
+  font-weight: bold;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.auth-menu span:hover {
+  color: rgba(255, 255, 255, 0.75);
+}

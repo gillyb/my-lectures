@@ -1,0 +1,10 @@
+.NewTweetSection {
+  margin-top: 20px;
+}
+
+.Tweet {
+  margin-top: 20px;
+}
+.Tweet:hover {
+  background-color: #eee;
+}

@@ -1,0 +1,16 @@
+.AuthForm {
+  padding-top: 200px;
+}
+
+.nav-tabs {
+  margin-bottom: 20px;
+}
+
+.LoginForm, .RegisterForm {
+  width: 300px;
+}
+
+.ErrorMessage {
+  text-align: center;
+  color: red;
+}
